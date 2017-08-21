@@ -1,0 +1,19 @@
+<%= form_for @user do |f| %>
+<%= f.label :first_name %>:
+<%= f.text_field :first_name %> <br>
+<%= f.label :last_name %>:
+<%= f.text_field :last_name %> <br>
+<%= f.label :username %>:
+<%= f.text_field :username %> <br>
+<%= f.label :password %>:
+<%= f.text_field :password %> <br>
+<%= f.label :password_confirmation %>:
+<%= f.text_field :password_confirmation %> <br>
+Select <%= f.label :account_type %>:
+<select name="account_type" id="account_type">
+  <option value="customer">Customer</option>
+  <option value="chef">Chef</option>
+  <option value="courier">Courier</option>
+</select> <br>
+<%= f.submit 'Submit' %>
+<% end %>
