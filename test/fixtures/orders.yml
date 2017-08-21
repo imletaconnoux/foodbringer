@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  courier_id: 1
+  chef_id: 1
+  completed: false
+
+two:
+  customer_id: 1
+  courier_id: 1
+  chef_id: 1
+  completed: false
