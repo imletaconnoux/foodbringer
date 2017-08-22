@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   	if @user.valid?
   		# successful creation of a user logs that user in and sets session user_type accordingly
   		session[:user_id] = @user.id
-  		session[:user_type] = @user.type
+  		session[:user_type] = @user.account_type.name
   		redirect_to root_path
   	else
   		render :new
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   	# think about using a before action to set user and their permissions based on session id?
 
   def user_params
-  	params.require(:user).permit(:first_name, :last_name, :type, :username, :password, :password_confirmation)
+  	params.require(:user).permit(:first_name, :last_name, :account_type_id, :username, :password, :password_confirmation)
   end
 
 end

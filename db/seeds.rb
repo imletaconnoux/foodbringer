@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+AccountType.find_or_create_by(name: "customer")
+AccountType.find_or_create_by(name: "chef")
+AccountType.find_or_create_by(name: "courier")

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   	if @user = User.find_by(username: params[:username])
   	   if @user.authenticate(params[:password])
   		     session[:user_id] = @user.id
-  		       session[:user_type] = @user.type
+  		       session[:user_type] = @user.account_type.name
   		         redirect_to root_path
   	    end
     else
