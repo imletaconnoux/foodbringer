@@ -5,7 +5,6 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :courier_id
       t.integer :chef_id
       t.boolean :completed, default: false
-      t.boolean :needs_courier, default: true
 
       t.timestamps
     end

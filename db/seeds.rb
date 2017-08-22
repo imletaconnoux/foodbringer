@@ -6,6 +6,52 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "SEEDING THE DATABASE...."
+
+# seeding account types
 AccountType.find_or_create_by(name: "customer")
 AccountType.find_or_create_by(name: "chef")
 AccountType.find_or_create_by(name: "courier")
+
+# seeding our chefs
+User.create(first_name: "maria", last_name: "bollognese", username: "maria72", account_type_id: 2, password: "password", password_confirmation: "password")
+User.create(first_name: "philippe", last_name: "gaston", username: "philg", account_type_id: 2, password: "password123", password_confirmation: "password123")
+User.create(first_name: "jing", last_name: "lin", username: "jlin", account_type_id: 2, password: "123", password_confirmation: "123")
+
+# seeding some chefs' items
+Item.find_or_create_by(name: "pasta", chef_id: 1, description: "primavera", price: 12.5)
+Item.find_or_create_by(name: "bruschetta", chef_id: 1, description: "getoastet toast", price: 1.35)
+Item.find_or_create_by(name: "filet mignon", chef_id: 2, description: "beefsteak", price: 800.9)
+Item.find_or_create_by(name: "salad nicoise", chef_id: 2, description: "salad", price: 9.0)
+Item.find_or_create_by(name: "soup dumplings", chef_id: 3, description: "dumplings with pork and soup", price: 703.5)
+Item.find_or_create_by(name: "lo mein", chef_id: 3, description: "noodles with vegetables", price: 21.6)
+Item.find_or_create_by(name: "peking duck", chef_id: 3, description: "slow cooked duck", price: 23.8)
+
+# seeding chef addresses
+Address.create(user_id: 1, zip: 17078)
+Address.create(user_id: 2, zip: 11249)
+Address.create(user_id: 3, zip: 11249)
+
+# seeding customer users
+User.create(first_name: "neil", last_name: "stiner", username: "neil", account_type_id: 1, password: "password", password_confirmation: "password")
+
+# seedin customer address
+Address.create(user_id: 4, zip: 11249)
+
+# seeding courier
+User.create(first_name: "isabelle", last_name: "letac", username: "isabelle", account_type_id: 3, password: "password", password_confirmation: "password")
+
+# seeding courier address
+Address.create(user_id: 5, zip: 11249)
+
+# seed orders
+Order.create(customer_id: 4, courier_id: 5, chef_id: 3)
+Order.create(customer_id: 4,chef_id: 2)
+
+# seed accompanying order_items
+OrderItem.create(order_id: 1, item_id: 5, quantity: 3)
+OrderItem.create(order_id: 1, item_id: 6, quantity: 1)
+OrderItem.create(order_id: 2, item_id: 3, quantity: 19)
+OrderItem.create(order_id: 2, item_id: 4, quantity: 12)
+
+

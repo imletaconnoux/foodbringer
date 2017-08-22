@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :logged_in?, :is_chef?, :is_courier?, :is_customer?
+  helper_method :logged_in?, :is_chef?, :is_courier?, :is_customer?, :current_user
 
 
   def home
@@ -13,10 +13,12 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
   	!!session[:user_id]
+    @user = User.find_by(id: session[:user_id])
   end
 
   def is_chef?
   	if session[:user_type] == "chef"
+      @user = User.find_by(id: session[:user_id])
   		true
   	else
   		false
@@ -25,6 +27,7 @@ class ApplicationController < ActionController::Base
 
   def is_courier?
   	if session[:user_type] == "courier"
+      @user = User.find_by(id: session[:user_id])
   		true
   	else
   		false
@@ -33,10 +36,16 @@ class ApplicationController < ActionController::Base
 
   def is_customer?
   	if session[:user_type] == "customer"
+      @user = User.find_by(id: session[:user_id])
   		true
   	else
   		false
   	end
+  end
+
+
+  def current_user
+    @user ||= User.find_by(id: session[:user_id])
   end
 
 
