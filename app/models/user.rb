@@ -30,6 +30,15 @@ class User < ApplicationRecord
 		end
 	end
 
+	def completed_orders
+		if current_user.account_type_id.to_i == 1
+			self.meals.where(completed: true)
+		elsif current_user.account_type_id.to_i == 2
+			self.orders.where(completed: true)
+		elsif current_user.account_type_id.to_i == 3
+			self.deliveries.where(completed: true)
+		end
+	end
 
 	# returns orders that need courier
 

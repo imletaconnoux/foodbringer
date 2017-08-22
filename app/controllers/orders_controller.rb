@@ -11,6 +11,14 @@ class OrdersController < ApplicationController
 
 	end
 
+	def index
+
+		@completed_orders = current_user.completed_orders
+
+
+	end
+
+
 
 
 	private

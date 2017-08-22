@@ -45,7 +45,9 @@ User.create(first_name: "isabelle", last_name: "letac", username: "isabelle", ac
 Address.create(user_id: 5, zip: 11249)
 
 # seed orders
-Order.create(customer_id: 4, courier_id: 5, chef_id: 3)
+done = Order.create(customer_id: 4, courier_id: 5, chef_id: 3)
+done.completed = true
+done.save
 Order.create(customer_id: 4,chef_id: 2)
 
 # seed accompanying order_items
@@ -53,5 +55,3 @@ OrderItem.create(order_id: 1, item_id: 5, quantity: 3)
 OrderItem.create(order_id: 1, item_id: 6, quantity: 1)
 OrderItem.create(order_id: 2, item_id: 3, quantity: 19)
 OrderItem.create(order_id: 2, item_id: 4, quantity: 12)
-
-

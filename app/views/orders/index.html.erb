@@ -1,0 +1,12 @@
+
+<h2>Past Orders</h2>
+<% if @completed_orders %>
+<ul>
+<% @completed_orders.each do |order| %>
+<li>Your order from chef <%= link_to order.chef.full_name, user_path(order.chef)%> on <%=order.updated_at%>.
+<%= link_to 'View order', order_path(order)%></li>
+<%end%>
+</ul>
+<% else %>
+<p>You have no completed orders.</p>
+<%end%>
