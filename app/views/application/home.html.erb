@@ -1,6 +1,17 @@
 <body background="grandma.jpg" no-repeat></body>
 
-<h2>Already a user? <%= link_to 'Log in', login_path %> </h2>
+<% if logged_in? %>
+  <% if is_chef? %>
+    <p> You are a chef </p>
+  <% elsif is_customer? %>
+  <p> You are a customer </p>
+  <% elsif is_courier? %>
+  <p> You are a courier </p>
+  <%end%>
+  <p>You are logged in!</p>
+  <p><%= link_to 'Log out', logout_path, method: :delete %></p>
+<% else %>
+  <h2>Already a user? <%= link_to 'Log in', login_path %> </h2>
 
-<h2>New to FoodBringer? <%= link_to 'Sign up', new_user_path %></h2>
-
+  <h2>New to FoodBringer? <%= link_to 'Sign up', new_user_path %></h2>
+  <%end%>

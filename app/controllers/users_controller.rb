@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   # def index
-  	
+
   # end
 
   def destroy
@@ -49,5 +49,5 @@ class UsersController < ApplicationController
   def user_params
   	params.require(:user).permit(:first_name, :last_name, :type, :username, :password, :password_confirmation)
   end
-  
+
 end

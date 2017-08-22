@@ -1,3 +1,5 @@
+require 'pry'
+
 class SessionsController < ApplicationController
 
 	# get "/login"
@@ -7,16 +9,17 @@ class SessionsController < ApplicationController
 
   # post "/login"
   def create
-  	@user = User.find_by(username: params[:user][:username])
-  	if @user.authenticate(params[:user][:password])
-  		session[:user_id] = @user.id
-  		session[:user_type] = @user.type
-  		redirect_to root_path
-  	else
-  		redirect_to login_path
-  		# add flash message
-  	end
 
+  	if @user = User.find_by(username: params[:username])
+  	   if @user.authenticate(params[:password])
+  		     session[:user_id] = @user.id
+  		       session[:user_type] = @user.type
+  		         redirect_to root_path
+  	    end
+    else
+      redirect_to login_path
+       # add flash message
+    end
   end
 
   # delete "/logout"

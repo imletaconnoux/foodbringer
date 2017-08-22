@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_methods :logged_in?, :is_chef?, :is_courier?, :is_customer?
+  helper_method :logged_in?, :is_chef?, :is_courier?, :is_customer?
 
 
   def home
-  	
+
   end
 
 
