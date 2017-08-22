@@ -1,0 +1,20 @@
+<% if current_user.outstanding_meals %>
+  <h3>Outstanding Orders:</h3>
+  <% current_user.outstanding_meals.each do |meal| %>
+    Your order from chef <%= meal.chef.full_name %> is in progress
+    <%= link_to 'View Order', order_path(meal) %>
+    <ul>
+      <% meal.items.each do |item| %>
+      <li>
+        <%= item.name %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+<h3>Chefs in your area:</h3>
+  <ul>
+<% current_user.available_chefs.each do |chef| %>
+  <li> <%= link_to chef.full_name, user_path(chef) %> </li>
+  <%end%>
+</ul>

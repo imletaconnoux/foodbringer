@@ -1,6 +1,6 @@
 <h2>Your order from <%= @order.chef.full_name%></h2>
 
-<p>Order status: </p>
+<p>Order status: <%= @order.status %> </p>
 <p>Time you ordered: <%= @order.created_at%></p>
 
 
@@ -14,12 +14,12 @@
 <% end %>
 </p>
 
-Items: 
+Items:
 <ul>
 	<% @order.items.each do |item| %>
 	<li>
 	<% @total_price += item.price #increment @total_price so that we dont have to iterate again %>
-	<%= item.name %>:  $<%= "%.2f" %[item.price] %> 	
+	<%= item.name %>:  $<%= "%.2f" %[item.price] %>
 	</li>
 	<% end %>
 </ul>

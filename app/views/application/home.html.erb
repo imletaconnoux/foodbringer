@@ -1,30 +1,18 @@
 <body background="grandma.jpg" no-repeat></body>
 
 <% if logged_in? %>
+  <h3>Welcome, <%= current_user.first_name %></h3>
   <% if is_chef? %>
-    <p> You are a chef </p>
-  <% elsif is_customer? %>
-    <p> You are a customer </p>
-    <% if current_user.outstanding_meals %>
-      <% current_user.outstanding_meals.each do |meal| %>
-        Your order from <%= meal.chef.full_name %> is in progress
-        <%= link_to 'View Order', order_path(meal) %>
-        <ul>
-          <% meal.items.each do |item| %>
-          <li>
-            <%= item.name %>
-          </li>
-          <% end %>
-        </ul>
-        
+      <%= render 'chef' %>
 
-      <% end %>
-    <% end %>
+  <% elsif is_customer? %>
+
+    <%= render 'customer' %>
+
   <% elsif is_courier? %>
-    <p> You are a courier </p>
+      <%= render 'courier' %>
   <%end%>
-    <p>Welcome, <%= current_user.first_name %></p>
-    <p>You are logged in!</p>
+
     <p><%= link_to 'Log out', logout_path, method: :delete %></p>
 <% else %>
     <h2>Already a user? <%= link_to 'Log in', login_path %> </h2>
