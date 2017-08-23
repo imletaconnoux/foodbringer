@@ -3,7 +3,7 @@
 <ul>
 <% current_user.available_orders.each do |order| %>
   <li> Meal prepared by chef <%= order.chef.full_name %> for <%= order.customer.full_name %>
-  <%= link_to 'Deliver this meal', order_path(order), method: 'patch' %> </li>
+  <%= button_to 'View order', order_path(order) %> </li>
   <%end%>
 </ul>
 <%end%>

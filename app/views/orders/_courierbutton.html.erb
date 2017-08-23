@@ -1,0 +1,9 @@
+
+
+<% if @order.accepted && !@order.courier_id %>
+	<%= button_to 'take this delivery job', order_path(@order), method: 'patch' %>
+<% elsif @order.ready && !@order.picked_up%>
+	<%= button_to 'confirm pickup', picked_up_path(@order), method: 'patch' %> 
+<% elsif @order.picked_up && !@order.completed %>
+	<%= button_to 'Mark as delivered', delivered_path(@order), method: 'patch' %>
+<% end %>

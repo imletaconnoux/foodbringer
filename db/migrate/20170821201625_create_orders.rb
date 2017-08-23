@@ -6,7 +6,9 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :chef_id
       t.boolean :accepted, default: false
       t.boolean :ready, default: false
+      t.boolean :picked_up, default: false
       t.boolean :completed, default: false
+
 
       t.timestamps
     end
