@@ -1,0 +1,12 @@
+Items:
+<ul>
+	<% @items.each do |item| %>
+	<li>
+	<%= item.name %>:  $<%= "%.2f" %[item.price] %>
+	<% if current_user.account_type_id.to_i == 2 %>
+		<%= link_to 'Edit item', edit_item_path(item) %>
+		<%= link_to 'Delete item', item_path(item), method: 'delete' %>
+	<% end %>
+	</li>
+	<% end %>
+</ul>
