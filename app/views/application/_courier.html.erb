@@ -1,9 +1,19 @@
+<% if current_user.accepted_deliveries %>
+<h3>Your current deliveries.</h3>
+<ul>
+  <% current_user.accepted_deliveries.each do |delivery| %>
+    <li> Meal prepared by chef <%= delivery.chef.full_name %> for <%= delivery.customer.full_name %>
+    <%= link_to 'View order', order_path(delivery) %> </li>
+  <% end %>
+</ul>
+<% end %>
+
 <% if current_user.available_orders %>
 <h3>Orders in your zone that need a courier.</h3>
 <ul>
 <% current_user.available_orders.each do |order| %>
   <li> Meal prepared by chef <%= order.chef.full_name %> for <%= order.customer.full_name %>
-  <%= button_to 'View order', order_path(order) %> </li>
+  <%= link_to 'View order', order_path(order) %> </li>
   <%end%>
 </ul>
 <%end%>

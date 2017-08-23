@@ -14,32 +14,34 @@ AccountType.find_or_create_by(name: "chef")
 AccountType.find_or_create_by(name: "courier")
 
 # seeding our chefs
-User.create(first_name: "maria", last_name: "bollognese", username: "maria72", account_type_id: 2, password: "password", password_confirmation: "password")
-User.create(first_name: "philippe", last_name: "gaston", username: "philg", account_type_id: 2, password: "password123", password_confirmation: "password123")
-User.create(first_name: "jing", last_name: "lin", username: "jlin", account_type_id: 2, password: "123", password_confirmation: "123")
+User.create(first_name: "Maria", last_name: "Brunelli", username: "maria72", account_type_id: 2, password: "password", password_confirmation: "password")
+User.create(first_name: "Philippe", last_name: "Petit", username: "philg", account_type_id: 2, password: "password123", password_confirmation: "password123")
+User.create(first_name: "Jing", last_name: "Lin", username: "jlin", account_type_id: 2, password: "123", password_confirmation: "123")
 
 # seeding some chefs' items
-Item.find_or_create_by(name: "pasta", chef_id: 1, description: "primavera", price: 12.5)
-Item.find_or_create_by(name: "bruschetta", chef_id: 1, description: "getoastet toast", price: 1.35)
-Item.find_or_create_by(name: "filet mignon", chef_id: 2, description: "beefsteak", price: 800.9)
-Item.find_or_create_by(name: "salad nicoise", chef_id: 2, description: "salad", price: 9.0)
-Item.find_or_create_by(name: "soup dumplings", chef_id: 3, description: "dumplings with pork and soup", price: 703.5)
-Item.find_or_create_by(name: "lo mein", chef_id: 3, description: "noodles with vegetables", price: 21.6)
-Item.find_or_create_by(name: "peking duck", chef_id: 3, description: "slow cooked duck", price: 23.8)
+Item.find_or_create_by(name: "Pasta Primavera", chef_id: 1, description: "primavera", price: 12.5)
+Item.find_or_create_by(name: "Bruschetta", chef_id: 1, description: "getoastet toast", price: 1.35)
+Item.find_or_create_by(name: "Filet Mignon", chef_id: 2, description: "beefsteak", price: 22.9)
+Item.find_or_create_by(name: "Salad Nicoise", chef_id: 2, description: "salad", price: 9.0)
+Item.find_or_create_by(name: "French Onion Soup", chef_id: 2, description: "cheesy onion soup", price: 12.5)
+
+Item.find_or_create_by(name: "Soup Dumplings", chef_id: 3, description: "dumplings with pork and soup", price: 8.5)
+Item.find_or_create_by(name: "Lo Mein", chef_id: 3, description: "noodles with vegetables", price: 21.6)
+Item.find_or_create_by(name: "Peking Duck", chef_id: 3, description: "slow cooked duck", price: 23.8)
 
 # seeding chef addresses
-Address.create(user_id: 1, zip: 17078)
+Address.create(user_id: 1, zip: 11249)
 Address.create(user_id: 2, zip: 11249)
 Address.create(user_id: 3, zip: 11249)
 
 # seeding customer users
-User.create(first_name: "neil", last_name: "stiner", username: "neil", account_type_id: 1, password: "password", password_confirmation: "password")
+User.create(first_name: "Neil", last_name: "Steiner", username: "neil", account_type_id: 1, password: "password", password_confirmation: "password")
 
 # seedin customer address
 Address.create(user_id: 4, zip: 11249)
 
 # seeding courier
-User.create(first_name: "isabelle", last_name: "letac", username: "isabelle", account_type_id: 3, password: "password", password_confirmation: "password")
+User.create(first_name: "Isabelle", last_name: "Letaconnoux", username: "isabelle", account_type_id: 3, password: "password", password_confirmation: "password")
 
 # seeding courier address
 Address.create(user_id: 5, zip: 11249)

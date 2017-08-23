@@ -13,9 +13,9 @@
       <%= render 'courier' %>
   <%end%>
 
-    <p><%= link_to 'Log out', logout_path, method: :delete %></p>
+    <p><%= button_to 'Log out', logout_path, method: :delete %></p>
 <% else %>
-    <h2>Already a user? <%= link_to 'Log in', login_path %> </h2>
+    <h2>Already a user? <%= button_to 'Log in', login_path %> </h2>
 
-    <h2>New to FoodBringer? <%= link_to 'Sign up', new_user_path %></h2>
+    <h2>New to FoodBringer? <%= button_to 'Sign up', new_user_path %></h2>
 <%end%>

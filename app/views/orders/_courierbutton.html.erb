@@ -2,8 +2,10 @@
 
 <% if @order.accepted && !@order.courier_id %>
 	<%= button_to 'take this delivery job', order_path(@order), method: 'patch' %>
+<% elsif @order.accepted && @order.courier_id && !@order.ready %>
+	<p>Order is not yet ready for pickup. Check back soon.</p>
 <% elsif @order.ready && !@order.picked_up%>
-	<%= button_to 'confirm pickup', picked_up_path(@order), method: 'patch' %> 
+	<%= button_to 'confirm pickup', picked_up_path(@order), method: 'patch' %>
 <% elsif @order.picked_up && !@order.completed %>
 	<%= button_to 'Mark as delivered', delivered_path(@order), method: 'patch' %>
 <% end %>
