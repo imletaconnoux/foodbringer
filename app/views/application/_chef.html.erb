@@ -1,16 +1,35 @@
-<p> You are a chef </p>
 
-<% if current_user.outstanding_orders %>
-  <h3>Outstanding Orders:</h3>
+
+<% if !current_user.outstanding_orders.empty? %>
+  <h3>New Orders:</h3>
   <% current_user.outstanding_orders.each do |order| %>
-    
-    <%= link_to 'View Order', order_path(order) %>
+
+    <p> Order ID: #<%= link_to "%07d" %order.id, order_path(order) %></p>
     <ul>
       <% order.items.each do |item| %>
       <li>
         <%= item.name %>
       </li>
       <% end %>
+      <!-- <%= link_to 'View Order', order_path(order) %> -->
+    </ul>
+  <% end %>
+  <% else %>
+  <h3>You have no new orders.</h3>
+<% end %>
+
+<% if current_user.orders_in_progress %>
+  <h3>Orders in Progress:</h3>
+  <% current_user.orders_in_progress.each do |order| %>
+
+    <p> Order ID: #<%= link_to "%07d" %order.id, order_path(order) %></p>
+    <ul>
+      <% order.items.each do |item| %>
+      <li>
+        <%= item.name %>
+      </li>
+      <% end %>
+      <!-- <%= link_to 'View Order', order_path(order) %> -->
     </ul>
   <% end %>
 <% end %>

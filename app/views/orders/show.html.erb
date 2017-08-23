@@ -1,16 +1,16 @@
-<h2>Your order from <%= @order.chef.full_name%></h2>
+<h2>Order from:<%= @order.chef.full_name%></h2>
+<h2>Order for:<%= @order.customer.full_name%></h2>
 
 <p>Order status: <%= @order.status %> </p>
-<p>Time you ordered: <%= @order.created_at%></p>
+<p>Time ordered: <%= @order.created_at%></p>
 
 
 <p>
 <% if @order.courier_id %>
-	<%= @order.courier.full_name %> will arrive at <%= @order.created_at + 30.minute %> with your meal.
+	<%= @order.courier.full_name %> will arrive at <%= @order.created_at + 30.minute %>.
 <% else %>
-	Still awaiting a courier for your meal. <br>
-	Estimated arrival time for your meal is <%= @order.created_at + 1.hour %>. <br>
-	Thank you for your patience. <br>
+	Still awaiting a courier for this meal. <br>
+	Estimated delivery time for meal is <%= @order.created_at + 1.hour %>. <br>
 <% end %>
 </p>
 
@@ -34,4 +34,3 @@ Items:
 <% elsif current_user.account_type_id.to_i == 3 # is courier %>
 	<%= render 'courierbutton' %>
 <% end %>
-

@@ -7,19 +7,24 @@ class Order < ApplicationRecord
 
 	def status
 		# needs improvement
-		if !self.courier_id
-			"Your order has been accepted by chef #{self.chef.full_name}. It has not yet been accepted by a courrier."
-		elsif self.courier_id && !self.completed
-			"Your order has been accepted by chef #{self.chef.full_name}. #{self.courier.full_name} is on the way with your food!"
+
+		if !self.accepted
+			"Order has not yet been accept by chef."
+		elsif self.accepted && !self.ready
+			"Order is being prepared."
+		elsif self.ready && !self.picked_up
+			"Order is ready to be picked up."
+		elsif self.picked_up && !self.completed
+			"Order is on it's way to customer."
 		elsif self.completed
-			"Your order is completed. It arrived at #{self.updated_at}."
+			"Order has been delivered. Nom nom nom..."
 		end
 	end
 
-	# def delivered
-	# 	self.completed = true
-	# 	self.save
-	# end
+
+
+
+
 
 
 end

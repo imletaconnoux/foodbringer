@@ -13,7 +13,7 @@ class User < ApplicationRecord
 	def full_name
 		self.first_name + " " + self.last_name
 	end
-	
+
 	def name
 		full_name
 	end
@@ -32,6 +32,12 @@ class User < ApplicationRecord
 		end
 	end
 
+	def orders_in_progress
+		self.orders.select do |order|
+			order.accepted == true && order.picked_up == false
+		end
+	end
+
 	#orders needing a courier
 	def available_orders
 		if self.account_type_id.to_i == 3
@@ -39,6 +45,11 @@ class User < ApplicationRecord
 				order.chef.addresses.first.zip == self.addresses.first.zip
 			end
 		end
+	end
+
+	#allow courier to view accepted but not yet completed deliveries
+	def accepted_deliveries
+		self.deliveries.where(completed: false)
 	end
 
 	# for past orders for each type of user
@@ -61,9 +72,9 @@ class User < ApplicationRecord
 		end
 	end
 
-	
 
-	
+
+
 
 
 

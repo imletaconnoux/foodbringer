@@ -1,5 +1,5 @@
 <% if !@order.accepted %>
 	<%= button_to 'Accept Order', accepted_path(@order), method: 'patch' %>
 <% elsif @order.accepted && !@order.ready %>
-	<%= button_to 'Food is ready for pickup', ready_path(@order), method: 'patch' %> 
+	<%= button_to 'Mark ready for pickup', ready_path(@order), method: 'patch' %>
 <% end %>
