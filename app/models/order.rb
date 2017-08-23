@@ -6,6 +6,7 @@ class Order < ApplicationRecord
 	has_many :items, through: :order_items
 
 	def status
+		# needs improvement
 		if !self.courier_id
 			"Your order has been accepted by chef #{self.chef.full_name}. It has not yet been accepted by a courrier."
 		elsif self.courier_id && !self.completed

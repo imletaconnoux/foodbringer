@@ -1,1 +1,16 @@
 <p> You are a chef </p>
+
+<% if current_user.outstanding_orders %>
+  <h3>Outstanding Orders:</h3>
+  <% current_user.outstanding_orders.each do |order| %>
+    
+    <%= link_to 'View Order', order_path(order) %>
+    <ul>
+      <% order.items.each do |item| %>
+      <li>
+        <%= item.name %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

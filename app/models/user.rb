@@ -13,6 +13,10 @@ class User < ApplicationRecord
 	def full_name
 		self.first_name + " " + self.last_name
 	end
+	
+	def name
+		full_name
+	end
 
 	# returns incomplete orders that belong to current instance of customer user
 	def outstanding_meals
@@ -21,22 +25,10 @@ class User < ApplicationRecord
 		end
 	end
 
-# go back and fix multiple zip issue
-
-	def available_chefs
-
-		self.class.all.select do |user|
-			user.account_type_id.to_i == 2 && user.addresses.first.zip == self.addresses.first.zip
-		end
-	end
-
-	def completed_orders
-		if self.account_type_id.to_i == 1
-			self.meals.where(completed: true)
-		elsif self.account_type_id.to_i == 2
-			self.orders.where(completed: true)
-		elsif self.account_type_id.to_i == 3
-			self.deliveries.where(completed: true)
+	# for chefs to accept
+	def outstanding_orders
+		self.orders.select do |order|
+			order.accepted == false
 		end
 	end
 
@@ -48,6 +40,30 @@ class User < ApplicationRecord
 			end
 		end
 	end
+
+	# for past orders for each type of user
+	def completed_orders
+		if self.account_type_id.to_i == 1
+			self.meals.where(completed: true)
+		elsif self.account_type_id.to_i == 2
+			self.orders.where(completed: true)
+		elsif self.account_type_id.to_i == 3
+			self.deliveries.where(completed: true)
+		end
+	end
+
+
+# go back and fix multiple zip issue
+
+	def available_chefs
+		self.class.all.select do |user|
+			user.account_type_id.to_i == 2 && user.addresses.first.zip == self.addresses.first.zip
+		end
+	end
+
+	
+
+	
 
 
 
