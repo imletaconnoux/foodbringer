@@ -1,11 +1,7 @@
 <% if @user.account_type_id.to_i == 2 %>
-<h2> Chef <%= @user.full_name %>'s profile</h2>
-
-  <%= form_for @order do |f|%>
-  <%= f.collection_check_boxes :item_ids, @user.items, :id, :menu_info  %>
-  <%= f.hidden_field :chef_id, value: @user.id %>
-  <%= f.hidden_field :customer_id, value: current_user.id %>
-
-  <%= f.submit %>
-  <% end %>
+	<%= render 'chefshow' %>
+<% elsif @user.account_type_id.to_i == 1 %>
+	<%= render 'customershow' %>
+<% elsif @user.account_type_id.to_i == 3 %>
+	<%= render 'couriershow' %>
 <% end %>
