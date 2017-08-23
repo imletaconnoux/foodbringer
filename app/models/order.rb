@@ -15,6 +15,10 @@ class Order < ApplicationRecord
 		end
 	end
 
-	
+	# def delivered
+	# 	self.completed = true
+	# 	self.save
+	# end
+
 
 end

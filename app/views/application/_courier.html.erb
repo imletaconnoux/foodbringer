@@ -1,1 +1,9 @@
-<p> You are a courier </p>
+<% if current_user.available_orders %>
+<h3>Orders in your zone that need a courier.</h3>
+<ul>
+<% current_user.available_orders.each do |order| %>
+  <li> Meal prepared by chef <%= order.chef.full_name %> for <%= order.customer.full_name %>
+  <%= link_to 'Deliver this meal', order_path(order), method: 'patch' %> </li>
+  <%end%>
+</ul>
+<%end%>

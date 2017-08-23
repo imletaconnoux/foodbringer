@@ -3,7 +3,20 @@
 <% if @completed_orders %>
 <ul>
 <% @completed_orders.each do |order| %>
-<li>Your order from chef <%= link_to order.chef.full_name, user_path(order.chef)%> on <%=order.updated_at%>.
+<li>Date: <%=order.created_at%>
+  <ul>
+      <li>Customer: <%= order.customer.full_name%>.</li>
+      <li>Chef: <%= link_to order.chef.full_name, user_path(order.chef)%></li>
+      <li>Courier: <%= order.courier.full_name%>.</li>
+      <li>Items:
+          <ul>
+        <% order.items.each do |item| %>
+          <li> <%= item.name %> </li>
+        <% end %>
+        </ul>
+      </li>
+  </ul>
+</li>
 <%= link_to 'View order', order_path(order)%></li>
 <%end%>
 </ul>

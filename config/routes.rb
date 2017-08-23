@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :addresses
   resources :users
 
+  patch '/orders/:id/delivered', to: 'orders#delivered', as: 'delivered'
+
 
 
   get '/login', to: 'sessions#new'

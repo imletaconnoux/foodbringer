@@ -12,8 +12,9 @@ class ApplicationController < ActionController::Base
   # helper methods to check loggedin? and usertype?
 
   def logged_in?
-  	!!session[:user_id]
+
     @user = User.find_by(id: session[:user_id])
+    !!session[:user_id]
   end
 
   def is_chef?

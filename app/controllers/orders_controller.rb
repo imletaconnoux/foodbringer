@@ -18,7 +18,23 @@ class OrdersController < ApplicationController
 
 	end
 
+	def update
+		order = Order.find_by(id: params[:id])
+		if order.courier_id
+			flash[:message] = "Too slow! This order has been accepted by another courier."
+			redirect_to root_path
+		else
+			order.update(courier_id: current_user.id)
+			redirect_to order_path(order)
+		end
+	end
 
+	def delivered
+		order = Order.find_by(id: params[:id])
+		order.update(completed: true)
+		redirect_to order_path(order)
+
+	end
 
 
 	private

@@ -26,3 +26,7 @@ Items:
 
 <p>Delivery Fee: $5.00</p>
 <p>Total price: $<%= "%.2f" %[@total_price] %></p>
+
+<% if current_user.account_type_id.to_i == 3 && !@order.completed %>
+	<%= link_to 'Mark as delivered', delivered_path(@order), method: 'patch' %>
+	<% end %>

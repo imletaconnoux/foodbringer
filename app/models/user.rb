@@ -31,15 +31,27 @@ class User < ApplicationRecord
 	end
 
 	def completed_orders
-		if current_user.account_type_id.to_i == 1
+		if self.account_type_id.to_i == 1
 			self.meals.where(completed: true)
-		elsif current_user.account_type_id.to_i == 2
+		elsif self.account_type_id.to_i == 2
 			self.orders.where(completed: true)
-		elsif current_user.account_type_id.to_i == 3
+		elsif self.account_type_id.to_i == 3
 			self.deliveries.where(completed: true)
 		end
 	end
 
-	# returns orders that need courier
+	#orders needing a courier
+	def available_orders
+		if self.account_type_id.to_i == 3
+			Order.all.where(courier_id: nil).select do |order|
+				order.chef.addresses.first.zip == self.addresses.first.zip
+			end
+		end
+	end
+
+
+
+
+
 
 end
