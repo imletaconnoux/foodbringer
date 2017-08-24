@@ -14,13 +14,35 @@
       <%= render 'courier' %>
   <%end%>
 
-  
+
 <% else %>
-<div align = "center">
-  <h2> Welcome to FoodBringer </h2>
-  <h3> Get home cooked meals delivered to your door! </h3>
-  <p> Sign in to browse chefs in your area. Place your order. Once your meal is ready a courier will pick up your food</p>
+
+<style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body >
+    .landpage-image{
+      height: 100%;
+}
+
+.landpage-image{
+    background-image: url(newimage.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+  </style>
+  <div class="ui inverted vertical segment landpage-image">
+  <div align = "center">
+
+    <h1><font color="black">  Welcome to FoodBringer </font></h1>
+
+    <h2><font color="black"> Get home cooked meals delivered to your door!</font></h2>
+    <b><h3><font color="black"> Sign in to browse chefs in your area. </br> Place your order. Once your meal is ready a courier will pick up your food</font></h3></b>
+  </div>
 </div>
+
 <%end%>
 
 </body>
