@@ -1,15 +1,35 @@
-<%= form_for @user do |f| %>
-<%= f.label :first_name %>:
+<%= form_for(@user, {html: {class: 'ui form'}}) do |f| %>
+<div class="two fields">
+  <div class="two wide field">
+<%= f.label :first_name %>
 <%= f.text_field :first_name %> <br>
-<%= f.label :last_name %>:
+  </div>
+  <div class="two wide field">
+<%= f.label :last_name %>
 <%= f.text_field :last_name %> <br>
-<%= f.label :username %>:
+</div>
+</div>
+<div class="four wide field">
+<%= f.label :username %>
 <%= f.text_field :username %> <br>
-<%= f.label :password %>:
+</div>
+<div class="four wide field">
+<%= f.label :password %>
 <%= f.text_field :password %> <br>
-<%= f.label :password_confirmation %>:
+<%= f.label :password_confirmation %>
+</div>
+<div class="four wide field">
 <%= f.text_field :password_confirmation %> <br>
-<%= f.label :account_type %>:
+</div>
+<div class="four wide field">
+<%= f.label :account_type %>
+<% if !current_user.account_type_id %>
 <%= f.collection_select :account_type_id, AccountType.all, :id, :name %>
+<% else %>
+This is a <b><%= current_user.account_type.name %></b> account. You must create a separate login for each account type.
+</div>
+
+
+<% end %>
 <%= f.submit 'Submit' %>
 <% end %>

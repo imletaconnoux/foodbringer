@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find_by(id: params[:id])
   	if @user.update(user_params)
   		redirect_to root_path
   	else
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find_by(id: params[:id])
     @order = Order.new
-    
+
     # authorizing views
     # if session[:user_id] == params[:id] || @user.account_type_id == 2
     # end
