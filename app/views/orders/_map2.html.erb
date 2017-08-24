@@ -1,14 +1,15 @@
 <div id="floating-panel">
     <b>Start: </b>
     <select id="start">
+      <option value="new york city">Select Start</option>
       <option value="<%= @order.chef.addresses.first.findable %>">Chef</option>
-      <option value="chicago, il">Chicago</option>
+      
       
     </select>
     <b>End: </b>
     <select id="end">
       
-      <option value="los angeles, ca">Los Angeles</option>
+      <option value="albany">Select End</option>
       <option value="<%= @order.customer.addresses.first.findable %>">Customer</option>
     </select>
     </div>
@@ -18,8 +19,8 @@
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 7,
-          center: {lat: 41.85, lng: -87.65}
+          zoom: 12,
+          center: {lat: 40.744931, lng: -73.948358}
         });
         directionsDisplay.setMap(map);
 
