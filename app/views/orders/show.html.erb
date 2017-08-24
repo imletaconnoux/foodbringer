@@ -1,3 +1,5 @@
+<div class="ui two column grid">
+<div class="column">
 <h2>Order from:<%= @order.chef.full_name%></h2>
 <h2>Order for:<%= @order.customer.full_name%></h2>
 
@@ -27,11 +29,16 @@ Items:
 <p>Delivery Fee: $5.00</p>
 <p>Total price: $<%= "%.2f" %[@total_price] %></p>
 
+</div>
 
-
+<div class="column">
 <% if current_user.account_type_id.to_i == 2 # is chef %>
 	<%= render 'chefbutton' %>
 <% elsif current_user.account_type_id.to_i == 3 # is courier %>
 	<%= render 'courierbutton' %>
-	<%= render 'map' %>
+	
+		<%= render 'map' %>
+	
 <% end %>
+</div>
+</div>
