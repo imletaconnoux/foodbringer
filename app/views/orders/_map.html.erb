@@ -1,4 +1,19 @@
-<div id="map" style="width:90%; height:20em;"></div>
+
+
+<div id="floating-panel2">
+      
+      <input id="address2" type="hidden" style="width:300px;" value="<%= @order.chef.addresses.first.findable %>">
+      <input id="submit2" type="button" value="Find Chef">
+</div>
+
+<div id="floating-panel">
+      
+      <input id="address" type="hidden" style="width:300px;" value="<%= @order.customer.addresses.first.findable %>">
+      <input id="submit" type="button" value="Find Customer">
+</div>
+
+
+<div id="map" style="width:90%; height:40em;"></div>
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -10,6 +25,17 @@
           center: {lat: 40.705245, lng: -74.014070},
           zoom: 15
         });
+
+        // used for pinning order locations
+        geocoder = new google.maps.Geocoder();
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map, 1);
+        });
+
+        document.getElementById('submit2').addEventListener('click', function() {
+          geocodeAddress(geocoder, map, 2);
+        });
+
         infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
@@ -33,27 +59,29 @@
         }
       }
 
-   //    geocoder = new google.maps.Geocoder();
+      
 
-			// function codeAddress() {
+			function geocodeAddress(geocoder, resultsMap, submitNumber) {
+        if (submitNumber === 2) {
+          var address = document.getElementById('address2').value;
+        } else {
+          var address = document.getElementById('address').value;
+        }
 
-			//     //In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
-			//     var address = ;
-
-			//     geocoder.geocode( { 'address' : address }, function( results, status ) {
-			//         if( status == google.maps.GeocoderStatus.OK ) {
-
-			//             //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
-			//             map.setCenter( results[0].geometry.location );
-			//             var marker = new google.maps.Marker( {
-			//                 map     : map,
-			//                 position: results[0].geometry.location
-			//             } );
-			//         } else {
-			//             alert( 'Geocode was not successful for the following reason: ' + status );
-			//         }
-			//     } );
-			// }
+        
+        
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
