@@ -1,13 +1,23 @@
-<%= form_for @address do |f| %>
-<%= f.label :label %>:
-<%= f.text_field :label %><br>
-<%= f.label :street_address %>:
-<%= f.text_field :street_address %><br>
-<%= f.label :city %>:
-<%= f.text_field :city %><br>
-<%= f.label :state %>:
-<%= f.text_field :state %><br>
-<%= f.label :zip %>:
-<%= f.text_field :zip %><br>
+<%= form_for(@address, {html: {class: 'ui form'}}) do |f| %>
+ <div class="field">
+   <%= f.label :label %>
+   <%= f.text_field :label, placeholder: 'Enter the address Label' %>
+  </div>
+  <div class="field">
+<%= f.label :street_address %>
+<%= f.text_field :street_address, placeholder: 'Street address' %>
+</div>
+<div class="field">
+<%= f.label :city %>
+<%= f.text_field :city, placeholder: 'City' %>
+</div>
+<div class="field">
+<%= f.label :state %>
+<%= f.text_field :state, placeholder: 'State' %>
+</div>
+<div class="field">
+<%= f.label :zip %>
+<%= f.text_field :zip, placeholder: 'Zip'%>
+</div>
 <%= f.submit 'Submit' %>
 <% end %>
