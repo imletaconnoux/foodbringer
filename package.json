@@ -1,5 +1,7 @@
 {
   "name": "foodbringer",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "semantic-ui": "^2.2.13"
+  }
 }

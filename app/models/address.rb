@@ -1,8 +1,9 @@
 class Address < ApplicationRecord
 	belongs_to :user
+	validates :label, :street_address, :city, :state, :zip, :user_id, presence: true
 
-	# def to_s
-	# 	label + "\n" + street_address + "\n" city + ", " + state + " " + zip
-	# end
+	def to_s
+		label + "\n " + street_address + "\n " + city + ", " + state + " " + zip.to_s
+	end
 
 end

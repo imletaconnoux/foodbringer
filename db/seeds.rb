@@ -30,21 +30,21 @@ Item.find_or_create_by(name: "Lo Mein", chef_id: 3, description: "noodles with v
 Item.find_or_create_by(name: "Peking Duck", chef_id: 3, description: "slow cooked duck", price: 23.8)
 
 # seeding chef addresses
-Address.create(user_id: 1, zip: 11249)
-Address.create(user_id: 2, zip: 11249)
-Address.create(user_id: 3, zip: 11249)
+Address.create(user_id: 1, label: "Work", street_address: "12 park avenue", city: "New York", state: "NY",zip: 11249)
+Address.create(user_id: 2, label: "Work", street_address: "19 park avenue", city: "New York", state: "NY",zip: 11249)
+Address.create(user_id: 3, label: "Work", street_address: "11 broadway", city: "New York", state: "NY",zip: 11249)
 
 # seeding customer users
 User.create(first_name: "Neil", last_name: "Steiner", username: "neil", account_type_id: 1, password: "password", password_confirmation: "password")
 
 # seedin customer address
-Address.create(user_id: 4, zip: 11249)
+Address.create(user_id: 4, label: "home", street_address: "22 broadway", city: "New York", state: "NY", zip: 11249)
 
 # seeding courier
 User.create(first_name: "Isabelle", last_name: "Letaconnoux", username: "isabelle", account_type_id: 3, password: "password", password_confirmation: "password")
 
 # seeding courier address
-Address.create(user_id: 5, zip: 11249)
+Address.create(user_id: 5, label: "home", street_address: "80 4th avenue", city: "New York", state: "NY", zip: 11249)
 
 # seed orders
 done = Order.create(customer_id: 4, courier_id: 5, chef_id: 3)
