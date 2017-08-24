@@ -10,6 +10,8 @@ class User < ApplicationRecord
 	belongs_to :account_type
 	has_secure_password
 
+	accepts_nested_attributes_for :addresses
+
 	def full_name
 		self.first_name + " " + self.last_name
 	end

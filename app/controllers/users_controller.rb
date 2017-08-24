@@ -2,10 +2,15 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.addresses.build
+
   end
 
   def create
+
   	@user = User.create(user_params)
+
+
   	if @user.valid?
   		# successful creation of a user logs that user in and sets session user_type accordingly
   		session[:user_id] = @user.id
@@ -53,7 +58,8 @@ class UsersController < ApplicationController
   	# think about using a before action to set user and their permissions based on session id?
 
   def user_params
-  	params.require(:user).permit(:first_name, :last_name, :account_type_id, :username, :password, :password_confirmation)
+  	params.require(:user).permit(:first_name, :last_name, :account_type_id, :username, :password, :password_confirmation,
+    addresses_attributes: [:label, :street_address, :city, :state, :zip, :user_id])
   end
 
 end

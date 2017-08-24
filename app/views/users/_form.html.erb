@@ -1,35 +1,62 @@
+
 <%= form_for(@user, {html: {class: 'ui form'}}) do |f| %>
 <div class="two fields">
   <div class="two wide field">
 <%= f.label :first_name %>
-<%= f.text_field :first_name %> <br>
+<%= f.text_field :first_name, placeholder: 'First Name' %> <br>
   </div>
   <div class="two wide field">
 <%= f.label :last_name %>
-<%= f.text_field :last_name %> <br>
+<%= f.text_field :last_name, placeholder: 'Last Name' %> <br>
 </div>
 </div>
 <div class="four wide field">
 <%= f.label :username %>
-<%= f.text_field :username %> <br>
+<%= f.text_field :username, placeholder: 'Username' %> <br>
 </div>
 <div class="four wide field">
 <%= f.label :password %>
-<%= f.text_field :password %> <br>
-<%= f.label :password_confirmation %>
+<%= f.text_field :password, placeholder: 'Password' %> <br>
 </div>
 <div class="four wide field">
-<%= f.text_field :password_confirmation %> <br>
+<%= f.label :password_confirmation %>
+<%= f.text_field :password_confirmation, placeholder: 'Confirm Password' %> <br>
 </div>
 <div class="four wide field">
 <%= f.label :account_type %>
 <% if !current_user %>
-<%= f.collection_select :account_type_id, AccountType.all, :id, :name %>
+<%= f.collection_select :account_type_id, AccountType.all, :id, :name %> <br>
 <% else %>
 This is a <b><%= current_user.account_type.name %></b> account. You must create a separate login for each account type.
+
+<%end%>
 </div>
-
-
+<% if !current_user %>
+<h3> Address Information: </h3>
+ <%= f.fields_for :addresses do |a| %>
+<div class ="four wide field">
+<%= a.label :label %>
+<%= a.text_field :label, placeholder: 'Label' %>
+</div>
+<div class ="four wide field">
+<%= a.label :street_address %>
+<%= a.text_field :street_address, placeholder: 'Street address' %>
+</div>
+<div class="three fields">
+<div class="two wide field">
+<%= a.label :city %>
+<%= a.text_field :city, placeholder: 'City' %>
+</div>
+<div class="one wide field">
+<%= a.label :state %>
+<%= a.text_field :state, placeholder: 'State' %>
+</div>
+<div class="one wide field">
+<%= a.label :zip %>
+<%= a.text_field :zip, placeholder: 'Zip'%>
+</div>
+</div>
+<% end %>
 <% end %>
 <br>
 <%= f.submit 'Submit' %>
