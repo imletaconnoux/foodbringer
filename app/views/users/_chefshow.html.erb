@@ -2,9 +2,9 @@
 <h2> Chef <%= @user.full_name %>'s profile</h2>
 
   <%= form_for @order do |f|%>
-  <%= f.collection_check_boxes :item_ids, @user.items, :id, :menu_info  %>
+  <%= f.collection_check_boxes :item_ids, @user.items, :id, :menu_info  %><br>
   <%= f.hidden_field :chef_id, value: @user.id %>
-  <%= f.hidden_field :customer_id, value: current_user.id %>
+  <%= f.hidden_field :customer_id, value: current_user.id %><
 
   <%= f.submit %>
 
@@ -14,7 +14,7 @@
 <% elsif current_user.account_type_id.to_i == 2 %>
   <h2> <%= current_user.name %> </h2>
 
-  <h3>Current food items:</h3>
+ <h4 class="ui dividing header">Current Food Items</h4>
 
   <ul>
   	<% current_user.items.each do |item| %>
@@ -27,7 +27,7 @@
   	</li>
   	<% end %>
   </ul>
-  <%= link_to 'Add an item', new_item_path %>
+ <h4 class="ui dividing header">Current Address</h4>
 
   <h3>Current address: </h3>
   <b> <%= current_user.addresses.first.label %> </b><br>
@@ -35,7 +35,7 @@
   <%= current_user.addresses.first.city %>, <%= current_user.addresses.first.state %> <%= current_user.addresses.first.zip %><br>
   <%= link_to "Edit Address", edit_address_path(current_user.addresses.first) %>
 
-  <h3>Account details: </h3>
+ <h4 class="ui dividing header">Account Details</h4>
   <b>Name:</b> <%= current_user.name %><br>
   <b>Username:</b> <%= current_user.username %><br>
   <b>Account Type:</b> <%= current_user.account_type.name %><br>
