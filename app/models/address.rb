@@ -6,4 +6,8 @@ class Address < ApplicationRecord
 		label + "\n " + street_address + "\n " + city + ", " + state + " " + zip.to_s
 	end
 
+	def findable
+		street_address + " " + city + ", " + state + " " + zip.to_s
+	end
+
 end
