@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  # google maps API key: AIzaSyDjte0LOgSBIM9SlGuhq26nrc-Wq1bNWtw
+
 	# will need to add "only" component to some resources
 
   resources :order_items

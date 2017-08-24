@@ -1,6 +1,7 @@
 
 
 <% if logged_in? %>
+  <body>
   <h3>Welcome, <%= current_user.first_name %></h3>
   <% if is_chef? %>
       <%= render 'chef' %>
@@ -21,3 +22,5 @@
   <p> Sign in to browse chefs in your area. Place your order. Once your meal is ready a courier will pick up your food</p>
 </div>
 <%end%>
+
+</body>
