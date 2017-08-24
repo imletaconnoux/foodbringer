@@ -1,3 +1,4 @@
+<% if current_user.account_type_id.to_i == 1 %>
 <h2> Chef <%= @user.full_name %>'s profile</h2>
 
   <%= form_for @order do |f|%>
@@ -6,4 +7,39 @@
   <%= f.hidden_field :customer_id, value: current_user.id %>
 
   <%= f.submit %>
+
+  <% end %>
+
+
+<% elsif current_user.account_type_id.to_i == 2 %>
+  <h2> <%= current_user.name %> </h2>
+
+  <h3>Current food items:</h3>
+
+  <ul>
+  	<% current_user.items.each do |item| %>
+  	<li>
+  	<%= item.name %>:  $<%= "%.2f" %[item.price] %>
+  	<% if current_user.account_type_id.to_i == 2 %>
+  		<%= button_to 'Edit item', edit_item_path(item) %> <br>
+  		<%= button_to 'Delete item', item_path(item), method: 'delete' %> <br>
+  	<% end %>
+  	</li>
+  	<% end %>
+  </ul>
+  <%= link_to 'Add an item', new_item_path %>
+
+  <h3>Current address: </h3>
+  <b> <%= current_user.addresses.first.label %> </b><br>
+  <%= current_user.addresses.first.street_address %><br>
+  <%= current_user.addresses.first.city %>, <%= current_user.addresses.first.state %> <%= current_user.addresses.first.zip %><br>
+  <%= link_to "Edit Address", edit_address_path(current_user.addresses.first) %>
+
+  <h3>Account details: </h3>
+  <b>Name:</b> <%= current_user.name %><br>
+  <b>Username:</b> <%= current_user.username %><br>
+  <b>Account Type:</b> <%= current_user.account_type.name %><br>
+  <%= link_to "Edit Account Info", edit_user_path(current_user) %>
+
+
   <% end %>
