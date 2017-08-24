@@ -1,0 +1,13 @@
+<h2> <%= current_user.name %> </h2>
+
+ <h4 class="ui dividing header">Current Address</h4>
+<b> <%= current_user.addresses.first.label %> </b><br>
+<%= current_user.addresses.first.street_address %><br>
+<%= current_user.addresses.first.city %>, <%= current_user.addresses.first.state %> <%= current_user.addresses.first.zip %><br>
+<%= link_to "Edit Address", edit_address_path(current_user.addresses.first) %>
+
+<h4 class="ui dividing header">Account Details</h4>
+<b>Name:</b> <%= current_user.name %><br>
+<b>Username:</b> <%= current_user.username %><br>
+<b>Account Type:</b> <%= current_user.account_type.name %><br>
+<%= link_to "Edit Account Info", edit_user_path(current_user) %>
