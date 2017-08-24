@@ -14,11 +14,31 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
+  <!--- playing around with semantics !--->
+
+
+  <div class="ui menu">
+    <div class="header item">
+      Our Company
+    </div>
+    <a class="item">
+      Log in
+    </a>
+    <a class="item">
+      Jobs
+    </a>
+    <a class="item">
+      Locations
+    </a>
+  </div>
+
 
   <body background="newimage.jpg" no-repeat>
 
     <%= yield %>
-    
+
   </body>
 </html>
