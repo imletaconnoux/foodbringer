@@ -18,17 +18,28 @@
 
   <div class="ui menu">
     <div class="header item">
-      Our Company
+      <a href = "<%= root_path %>">
+      FoodBringer
+      </a>
     </div>
-    <a class="item">
+    <% if logged_in? %>
+    <a href = "<%= orders_path %>" class="item">
+      Order History
+    </a>
+    <a href = "<%= user_path(current_user) %>" class="item">
+      Account
+    </a>
+    <a href = "<%= logout_path %>" data-method="delete" class="right aligned item">
+      Log out
+    </a>
+    <% else %>
+    <a href = "<%= login_path %>" class="item">
       Log in
     </a>
-    <a class="item">
-      Jobs
+    <a href = "<%= new_user_path %>" class="item">
+      Sign up
     </a>
-    <a class="item">
-      Locations
-    </a>
+    <% end %>
   </div>
 
 
