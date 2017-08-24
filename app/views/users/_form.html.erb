@@ -23,7 +23,7 @@
 </div>
 <div class="four wide field">
 <%= f.label :account_type %>
-<% if !current_user.account_type_id %>
+<% if !current_user %>
 <%= f.collection_select :account_type_id, AccountType.all, :id, :name %>
 <% else %>
 This is a <b><%= current_user.account_type.name %></b> account. You must create a separate login for each account type.
@@ -31,5 +31,6 @@ This is a <b><%= current_user.account_type.name %></b> account. You must create 
 
 
 <% end %>
+<br>
 <%= f.submit 'Submit' %>
 <% end %>
