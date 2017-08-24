@@ -1,2 +1,7 @@
-<%= current_user.name %>
-<%= current_user.addresses.first.to_s %>
+<h2> <%= current_user.name %> </h2>
+
+<h3>Current address: </h3>
+<b> <%= current_user.addresses.first.label %> </b><br>
+<%= current_user.addresses.first.street_address %><br>
+<%= current_user.addresses.first.city %>, <%= current_user.addresses.first.state %> <%= current_user.addresses.first.zip %><br>
+<%= link_to "Edit Address", edit_address_path(current_user.addresses.first) %>

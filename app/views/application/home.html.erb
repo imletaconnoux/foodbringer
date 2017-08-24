@@ -13,9 +13,11 @@
       <%= render 'courier' %>
   <%end%>
 
-    <p><%= button_to 'Log out', logout_path, method: :delete %></p>
+  
 <% else %>
-    <h2>Already a user? <%= button_to 'Log in', login_path %> </h2>
-
-    <h2>New to FoodBringer? <%= button_to 'Sign up', new_user_path %></h2>
+<div align = "center">
+  <h2> Welcome to FoodBringer </h2>
+  <h3> Get home cooked meals delivered to your door! </h3>
+  <p> Sign in to browse chefs in your area. Place your order. Once your meal is ready a courier will pick up your food</p>
+</div>
 <%end%>
