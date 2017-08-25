@@ -1,5 +1,12 @@
 
-<%= form_for(@user, {html: {class: 'ui form'}}) do |f| %>
+<body>
+
+  <div class="ui grid">
+    <div class="column">
+
+<%= form_for(@user, {html: {class: 'ui large form'}}) do |f| %>
+<div class="ui stacked segment">
+
 <div class="two fields">
   <div class="two wide field">
 <%= f.label :first_name %>
@@ -16,11 +23,11 @@
 </div>
 <div class="four wide field">
 <%= f.label :password %>
-<%= f.text_field :password, placeholder: 'Password' %> <br>
+<%= f.password_field :password, placeholder: 'Password' %> <br>
 </div>
 <div class="four wide field">
 <%= f.label :password_confirmation %>
-<%= f.text_field :password_confirmation, placeholder: 'Confirm Password' %> <br>
+<%= f.password_field :password_confirmation, placeholder: 'Confirm Password' %> <br>
 </div>
 <div class="four wide field">
 <%= f.label :account_type %>
@@ -60,4 +67,9 @@ This is a <b><%= current_user.account_type.name %></b> account. You must create 
 <% end %>
 <br>
 <%= f.submit 'Submit' %>
+</div>
+
 <% end %>
+</div>
+</div>
+</body>

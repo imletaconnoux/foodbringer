@@ -38,6 +38,9 @@ class UsersController < ApplicationController
   	@user = User.find_by(id: params[:id])
     @order = Order.new
 
+    # if current_user.account_type_id.to_i == 1 && @user.account_type_id.to_i == 2
+
+
     # authorizing views
     # if session[:user_id] == params[:id] || @user.account_type_id == 2
     # end

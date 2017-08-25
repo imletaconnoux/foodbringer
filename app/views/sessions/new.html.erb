@@ -11,16 +11,22 @@
     .column {
       max-width: 450px;
     }
+    .landpage-image{
+      height: 100%;
+}
+
+.landpage-image{
+    background-image: url(newimage.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
   </style>
 <body>
-
+<div class="ui inverted vertical segment landpage-image">
 <div class="ui middle aligned center aligned grid">
   <div class="column">
-    <h2 class="ui teal image header">
-      <div class="content">
-        Log-in to your account
-      </div>
-    </h2>
+    <h2><font color="white">Log in</font></h2>
 
     <%= form_tag '/login', {html: {class: 'ui large form'}} do %>
       <div class="ui stacked segment">
@@ -35,7 +41,7 @@
         <div class="five wide field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <%= text_field_tag :password, nil, placeholder: 'Password' %><br>
+            <%= password_field_tag :password, nil, placeholder: 'Password' %><br>
           </div>
         </div>
         <br>
@@ -46,11 +52,12 @@
 <%end%>
 
     <div class="ui message">
-      New to us? <a href=" <%= new_user_path %>">Sign Up</a>
+      <p>New to us?</p>
+      <p><a href=" <%= new_user_path %>">Sign Up</a></p>
     </div>
   </div>
 </div>
-
+  </div>
 
 
 
