@@ -1,12 +1,14 @@
   <div class="ui raised very padded text container segment">
 <% if current_user.account_type_id.to_i == 1 %>
-<h2> Chef <%= @user.full_name %>'s profile</h2>
+<h2> Chef <%= @user.full_name %>'s available items:</h2>
   <div class="ui form">
+
   <%= form_for@order do |f|%>
 
+    <div class = "field">
+    <%= f.collection_check_boxes :item_ids, @user.items, :id, :menu_info %>
 
-
-  <%= f.collection_check_boxes :item_ids, @user.items, :id, :menu_info %><br>
+  </div>
 
   <%= f.hidden_field :chef_id, value: @user.id %>
   <%= f.hidden_field :customer_id, value: current_user.id %>
@@ -15,6 +17,7 @@
   <%= f.submit %>
 
   <% end %>
+
 </div>
 
 
