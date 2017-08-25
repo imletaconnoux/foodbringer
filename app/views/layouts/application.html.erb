@@ -32,25 +32,25 @@
   <div class="ui menu">
     <div class="header item">
       <a href = "<%= root_path %>">
-      <font color="#d94000">FoodBringer </font>
+      <font size="6" face="trebuchet ms" color="#d94000">FoodBringer </font>
       </a>
     </div>
     <% if logged_in? %>
     <a href = "<%= orders_path %>" class="item">
-      Order History
+      <font size="4" face="trebuchet ms" color="#68a8e8">Order History</font>
     </a>
     <a href = "<%= user_path(current_user) %>" class="item">
-      Account
+      <font size="4" face="trebuchet ms" color="#68a8e8">Account</font>
     </a>
     <a href = "<%= logout_path %>" data-method="delete" class="right aligned item">
-      Log out
+      <font size="4" face="trebuchet ms" color="#68a8e8">Log out</font>
     </a>
     <% else %>
     <a href = "<%= login_path %>" class="item">
-      Log in
+      <font size="4" face="trebuchet ms" color="#68a8e8">Log in</font>
     </a>
     <a href = "<%= new_user_path %>" class="item">
-      Sign up
+      <font size="4" face="trebuchet ms" color="#68a8e8">Sign up</font>
     </a>
     <% end %>
   </div>
