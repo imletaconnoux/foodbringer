@@ -1,4 +1,4 @@
-
+  <div class="ui raised very padded text container segment">
 <h2> <%= current_user.name %> </h2>
 
  <h4 class="ui dividing header">Current Address</h4>
@@ -12,3 +12,4 @@
 <b>Username:</b> <%= current_user.username %><br>
 <b>Account Type:</b> <%= current_user.account_type.name %><br>
 <%= link_to "Edit Account Info", edit_user_path(current_user) %>
+</div>

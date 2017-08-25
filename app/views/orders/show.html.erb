@@ -1,3 +1,4 @@
+  <div class="ui raised very padded text container segment">
 <div class="ui two column grid">
 <div class="column">
 <h2>Order from: <%= @order.chef.full_name%></h2>
@@ -36,9 +37,10 @@ Items:
 	<%= render 'chefbutton' %>
 <% elsif current_user.account_type_id.to_i == 3 # is courier %>
 	<%= render 'courierbutton' %>
-	
+
 		<%= render 'map2' %>
-	
+
 <% end %>
+</div>
 </div>
 </div>

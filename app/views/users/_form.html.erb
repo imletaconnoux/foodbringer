@@ -1,11 +1,10 @@
 
 <body>
 
-  <div class="ui grid">
-    <div class="column">
+
 
 <%= form_for(@user, {html: {class: 'ui large form'}}) do |f| %>
-<div class="ui stacked segment">
+
 
 <div class="two fields">
   <div class="two wide field">
@@ -67,9 +66,8 @@ This is a <b><%= current_user.account_type.name %></b> account. You must create 
 <% end %>
 <br>
 <%= f.submit 'Submit' %>
-</div>
+
 
 <% end %>
-</div>
-</div>
+
 </body>
