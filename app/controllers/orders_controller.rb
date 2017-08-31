@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		binding.pry
+		# binding.pry
 		@order = Order.create(order_params)
 
 		redirect_to order_path(@order)
