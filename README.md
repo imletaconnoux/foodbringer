@@ -2,6 +2,10 @@
 
 A courier service for home-cooked meals. Users can sign in under three different aliases - customer, courier or chef. When logged in a customer, a user can search for chefs in their neighborhood (based on zip code) and place an order. A customer can view the status of their current order - if it has been accepted by the chef, if the food is ready for pick up, if a courier has accepted the delivery and if it's out for delivery. As a chef, a user can accept orders and mark them as ready. Finally as a courier, a user can view outstanding meals that need to be delivered in their delivery zone, accept a delivery and mark a delivery as picked up or delivered. When accepting a delivery, a courier can map the distance between the chef and the customer using the Google Maps API. 
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Lec-KRoeV1M
+" target="_blank"><img src="https://www.youtube.com/embed/Lec-KRoeV1M" 
+alt="FoodBringer Demo Video" width="240" height="180" border="10" /></a>
+
 ## Built With 
 
 + Built the front end and back end using Ruby on Rails and the MVC pattern
